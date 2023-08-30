@@ -12,8 +12,7 @@ services:
   #     - ./data/db:/root/db
       
   backend: 
-    build: 
-    
+    build:   
       context: ./backend
       dockerfile: Dockerfile
   
@@ -35,6 +34,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    image: react-app:latest
     ports:
       - '3000:3000'
     volumes:
