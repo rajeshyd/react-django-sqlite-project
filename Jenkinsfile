@@ -39,8 +39,9 @@ pipeline {
         stage("Deploy") {
             steps {
                 echo "Deploying the Container"
-                sh "docker run -d -p 8000:8000 rajesh93/django-app:latest"
-                sh "docker run -d -p 3000:3000 rajesh93/react-app:latest"
+                   sh "docker-compose down && docker-compose up -d"
+                // sh "docker run -d -p 8000:8000 rajesh93/django-app:latest"
+                // sh "docker run -d -p 3000:3000 rajesh93/react-app:latest"
             }
         }
     }
