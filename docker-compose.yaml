@@ -18,16 +18,16 @@ services:
       dockerfile: Dockerfile
   
     image: django-app:latest
-    
+
     # environment:
     #   - SQLITE3_DB=db.sqlite3
 
     ports:
       - '8000:8000'
-    volumes:
-      - ./backend:/app/backend
-    depends_on:
-      - db
+    # volumes:
+    #   - ./backend:/app/backend
+    # depends_on:
+    #   - db
       
 
 
