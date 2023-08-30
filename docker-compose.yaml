@@ -1,43 +1,43 @@
 version: '3.9'
 
 services:
-  db:
-    image: nouchka/sqlite3:latest
-    volumes:
-      - ./data/db:/root/db
-    environment:
-      - SQLITE3_DB=db.sqlite3
 
+  # db:
+  #   image: nouchka/sqlite3:latest
+  #   container_name: react-sqlite3
 
+  #   environment:
+  #     - SQLITE3_DB=db.sqlite3
+  #   volumes:
+  #     - ./data/db:/root/db
+      
   backend: 
     build: 
+    
       context: ./backend
       dockerfile: Dockerfile
-
-    environment:
-      - SQLITE3_DB=db.sqlite3
+  
+    image: django-app:latest
+    
+    # environment:
+    #   - SQLITE3_DB=db.sqlite3
 
     ports:
       - '8000:8000'
-
     volumes:
       - ./backend:/app/backend
-
     depends_on:
       - db
+      
+
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-
     ports:
       - '3000:3000'
-
     volumes:
       - ./frontend:/app/frontend
-
     depends_on:
       - backend
-
-  
