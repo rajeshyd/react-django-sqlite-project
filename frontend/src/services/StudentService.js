@@ -17,7 +17,7 @@ export function deleteStudent(studentId) {
 }
 
 export function addStudent(student){
-  return axios.post('http://127.0.0.1:8000/students/', {
+  return axios.post('http://18.220.160.162:8000/students/', {
     studentId:null,
     FirstName:student.FirstName.value,
     LastName:student.LastName.value,
