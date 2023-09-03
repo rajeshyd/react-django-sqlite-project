@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function getStudents() {
-  return axios.get('http://18.220.160.162/:8000/students/')
+  return axios.get('http://18.220.160.162:8000/students/')
     .then(response => response.data)
 }
 
