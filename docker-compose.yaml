@@ -4,7 +4,7 @@ services:
 
   # db:
   #   image: nouchka/sqlite3:latest
-  #   container_name: react-sqlite3
+  #   container_name: db-sqlite3
 
   #   environment:
   #     - SQLITE3_DB=db.sqlite3
@@ -24,7 +24,7 @@ services:
     ports:
       - '8000:8000'
     # volumes:
-    #   - ./backend:/app/backend
+    #  - ./backend/backend:/app/backend
     # depends_on:
     #   - db
       
