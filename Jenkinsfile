@@ -53,7 +53,7 @@ pipeline {
 
         stage('Deploy on K8s'){
             steps{
-        sshagent(['kubernetes-server']) {
+        sshagent(['k8s']) {
         sh "scp -o StrictHostKeyChecking=no reactdeployment.yaml ubuntu@192.168.49.2:/home/ubuntu/"
         script{
             try{
