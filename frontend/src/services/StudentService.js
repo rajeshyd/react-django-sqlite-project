@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function getStudents() {
-  return axios.get('http://127.0.0.1:8000/students/')
+  return axios.get('http://192.168.49.2:30003/students/')
     .then(response => response.data)
 }
 
@@ -17,7 +17,7 @@ export function deleteStudent(studentId) {
 }
 
 export function addStudent(student){
-  return axios.post('http://127.0.0.1:8000/students/', {
+  return axios.post('http://192.168.49.2:8000/students/', {
     studentId:null,
     FirstName:student.FirstName.value,
     LastName:student.LastName.value,

@@ -15,11 +15,20 @@ spec:
       labels:
         app: django
     spec:
+      volumes:
+        - name: sqlite-volume
+          hostPath:
+            path: /storage/sqlite/example/db.sqlite3
+            type: File
       containers:
       - name: django-app
         image: rajesh93/django-app:latest
         ports:
         - containerPort: 8000
+        volumeMounts:
+          - name: sqlite-volume
+            mountPath: /app/db.sqlite3
+
 
 
 
@@ -35,8 +44,8 @@ spec:
   type: NodePort
   ports:
   - protocol: TCP
-    port: 8000
-    targetPort: 80
-    nodePort: 31111
+    port: 80
+    targetPort: 8000
+    nodePort: 30003
 
 
