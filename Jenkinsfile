@@ -54,13 +54,13 @@ pipeline {
         stage('Deploy on K8s'){
             steps{
         sshagent(['k8s']) {
-        sh "scp -o StrictHostKeyChecking=no reactdeployment.yaml sudo ubuntu@192.168.49.1:/home/ubuntu/"
+        sh "scp -o StrictHostKeyChecking=no reactdeployment.yaml sudo ubuntu@10.244.0.4:/home/ubuntu/"
         script{
             try{
-                sh "ssh ubuntu@192.168.49.1 kubectl apply-f ."
+                sh "ssh ubuntu@10.244.0.4 kubectl apply-f ."
             }
             catch(error){
-                sh "ssh ubuntu@192.168.49.1 kubectl create -f ."
+                sh "ssh ubuntu@10.244.0.4 kubectl create -f ."
             }
         }
         // sh "scp /var/lib/jenkins/workspace/devops-project-one/* ubuntu@${kubernetes_server_private_ip}:/home/ubuntu"
