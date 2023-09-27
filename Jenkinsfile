@@ -36,14 +36,14 @@ pipeline {
             }
         }
         
-        // stage("Deploy") {
-        //     steps {
-        //         echo "Deploying the Container"
-        //            sh "docker-compose down && docker-compose up -d"
-        //         // sh "docker run -d -p 8000:8000 rajesh93/django-app:latest"
-        //         // sh "docker run -d -p 3000:3000 rajesh93/react-app:latest"
-        //     }
-        // }
+        stage("Deploy") {
+            steps {
+                echo "Deploying the Container"
+                   sh "docker-compose down && docker-compose up -d"
+                // sh "docker run -d -p 8000:8000 rajesh93/django-app:latest"
+                // sh "docker run -d -p 3000:3000 rajesh93/react-app:latest"
+            }
+        }
 
         // stage('Deploy to Kubernetes') {
         //         steps {
@@ -51,21 +51,21 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy on K8s'){
-            steps{
-        sshagent(['k8s']) {
-        sh "scp -o StrictHostKeyChecking=no reactdeployment.yaml sudo ubuntu@192.168.49.2:/home/ubuntu/"
-        script{
-            try{
-                sh "ssh ubuntu@192.168.49.2 kubectl apply-f ."
-            }
-            catch(error){
-                sh "ssh ubuntu@192.168.49.2 kubectl create -f ."
-            }
-        }
-        // sh "scp /var/lib/jenkins/workspace/devops-project-one/* ubuntu@${kubernetes_server_private_ip}:/home/ubuntu"
-     }
-     }
-    }
+     //    stage('Deploy on K8s'){
+     //        steps{
+     //    sshagent(['k8s']) {
+     //    sh "scp -o StrictHostKeyChecking=no reactdeployment.yaml sudo ubuntu@192.168.49.2:/home/ubuntu/"
+     //    script{
+     //        try{
+     //            sh "ssh ubuntu@192.168.49.2 kubectl apply-f ."
+     //        }
+     //        catch(error){
+     //            sh "ssh ubuntu@192.168.49.2 kubectl create -f ."
+     //        }
+     //    }
+     //    // sh "scp /var/lib/jenkins/workspace/devops-project-one/* ubuntu@${kubernetes_server_private_ip}:/home/ubuntu"
+     // }
+     //}
+    //}
     }
 }
